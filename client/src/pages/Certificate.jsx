@@ -22,53 +22,53 @@ const Certificate = () => {
   const certificates = [
     {
       id: 1,
-      title: "React Developer Certification",
-      issuer: "Meta (Coursera)",
-      date: "June 2023",
+      title: "React Developer ",
+      issuer: "Ezitech",
+      date: "Aug 2024",
       image: cert1,
-      category: "Frontend",
+      category: "Internship",
       skills: ["React", "Redux", "React Router"],
     },
     {
       id: 2,
-      title: "Node.js Backend Specialist",
-      issuer: "Udemy",
-      date: "April 2023",
+      title: "Graphic Design",
+      issuer: "DigiSkill",
+      date: "jan 2021",
       image: cert2,
-      category: "Backend",
-      skills: ["Node.js", "Express", "REST APIs"],
+      category: "Training",
+      skills: ["Canva", "Adobe Photoshop", "Illustrator"],
     },
     {
       id: 3,
-      title: "MERN Stack Mastery",
-      issuer: "Scrimba",
-      date: "March 2023",
+      title: "Freelancing",
+      issuer: "DigiSkill",
+      date: "jan 2021",
       image: cert3,
-      category: "Fullstack",
-      skills: ["MongoDB", "Express", "React", "Node.js"],
+      category: "Training",
+      skills: ["Fiverr", "Upwork"],
     },
     {
       id: 4,
-      title: "JavaScript Advanced Concepts",
-      issuer: "Frontend Masters",
-      date: "February 2023",
+      title: "Wordpress",
+      issuer: "DigiSkill",
+      date: "March 2021",
       image: cert4,
-      category: "Frontend",
-      skills: ["ES6+", "Async Programming", "Design Patterns"],
+      category: "Training",
+      skills: ["Theme Development", "Plugin Development"],
     },
     {
       id: 4,
-      title: "JavaScript Advanced Concepts",
-      issuer: "Frontend Masters",
+      title: "PHP",
+      issuer: "Horizon Software",
       date: "February 2023",
       image: cert5,
-      category: "Frontend",
-      skills: ["ES6+", "Async Programming", "Design Patterns"],
+      category: "Internship",
+      skills: ["HTML", "CSS", "JavaScript", "php"],
     },
   ];
 
   // Available filters
-  const filters = ["All", "Frontend", "Backend", "Fullstack", "DevOps"];
+  const filters = ["All", "Internship", "Training", "Job"];
 
   // Filter certificates based on active filter
   const filteredCerts =

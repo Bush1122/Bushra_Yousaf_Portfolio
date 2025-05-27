@@ -23,17 +23,17 @@ const Service = () => {
       id: 1,
       title: "Frontend Development",
       description:
-        "Building responsive, interactive user interfaces with React, Next.js, and modern CSS frameworks",
+        "Building responsive, interactive user interfaces with React and modern CSS frameworks",
       icon: frontendLogo,
       category: "development",
       features: [
-        "React.js & Next.js Applications",
-        "Responsive UI/UX Design",
+        "React.js  Applications",
+        "Responsive Design",
         "State Management (Redux/Context)",
         "Performance Optimization",
         "Accessibility Compliance",
       ],
-      price: "Starting at $500/project",
+      price: "Starting at $50/project",
     },
     {
       id: 2,
@@ -49,7 +49,7 @@ const Service = () => {
         "Server Deployment & CI/CD",
         "Microservices Architecture",
       ],
-      price: "Starting at $800/project",
+      price: "Starting at $100/project",
     },
     {
       id: 3,
@@ -65,7 +65,7 @@ const Service = () => {
         "Cloud Deployment (AWS/Vercel)",
         "Maintenance & Support",
       ],
-      price: "Starting at $1,500/project",
+      price: "Starting at $200/project",
     },
     {
       id: 4,
@@ -81,26 +81,11 @@ const Service = () => {
         "Interview Preparation",
         "Career Guidance",
       ],
-      price: "$50/hour or $400/month",
+      price: "$20/hour or $100/month",
     },
+
     {
       id: 5,
-      title: "Code Audit & Optimization",
-      description:
-        "Comprehensive review of your existing codebase with performance and security improvements",
-      icon: backendLogo,
-      category: "consulting",
-      features: [
-        "Performance Analysis",
-        "Security Vulnerability Check",
-        "Architecture Review",
-        "Refactoring Recommendations",
-        "Technical Debt Assessment",
-      ],
-      price: "$300-$1,000 depending on codebase",
-    },
-    {
-      id: 6,
       title: "Workshops & Training",
       description:
         "Group training sessions for teams looking to upskill in modern web development",
@@ -148,7 +133,7 @@ const Service = () => {
 
           {/* Service categories */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {["all", "development", "education", "consulting"].map((tab) => (
+            {["all", "development", "education"].map((tab) => (
               <motion.button
                 key={tab}
                 whileHover={{ scale: 1.05 }}
@@ -225,7 +210,7 @@ const Service = () => {
                   <motion.a
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    href="#contact" // Link to your contact section
+                    href="/Contact" // Link to your contact section
                     className="block w-full px-4 py-3 text-sm font-medium text-center text-white transition-all bg-yellow-500 rounded-md hover:bg-yellow-600"
                   >
                     Get Started

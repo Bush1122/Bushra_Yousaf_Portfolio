@@ -24,7 +24,6 @@ const Contact = () => {
     "Backend Development",
     "Full-Stack MERN Project",
     "MERN Stack Mentorship",
-    "Code Review/Audit",
     "Other Inquiry",
   ];
 
@@ -47,15 +46,6 @@ const Contact = () => {
         "The MERN stack course was comprehensive and practical. I went from beginner to building full applications in just 8 weeks.",
       rating: 5,
       project: "MERN Mentorship",
-    },
-    {
-      id: 3,
-      name: "Emma Rodriguez",
-      role: "Startup Founder",
-      content:
-        "Our codebase audit identified critical performance issues we had missed. Highly recommend her consulting services.",
-      rating: 4,
-      project: "Code Audit",
     },
   ];
 
