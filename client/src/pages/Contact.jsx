@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import Header from "../components/pageComponents/Header";
 import Footer from "../components/pageComponents/Footer";
 import PhysicsCursor from "../components/ui/PhysicsCursor";
@@ -62,15 +63,20 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      emailjs.init("xUiBJqbQxc-Y0LQH6");
 
-      if (response.ok) {
+      const response = await emailjs.send(
+        "service_zndavul",
+        "template_gr03979",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          service: formData.service,
+          message: formData.message,
+        }
+      );
+
+      if ((response.status = 200)) {
         setSubmitStatus("success");
         setFormData({
           name: "",
