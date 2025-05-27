@@ -2,36 +2,49 @@ import { motion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaEnvelope,
   FaHeart,
+  FaUser,
+  FaCode,
+  FaPhone,
+  FaChevronRight,
+  FaFacebook,
+  FaYoutube,
 } from "react-icons/fa";
 import { useTheme } from "../../context/ThemeContext";
 
 const footerLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "About", path: "/", icon: <FaUser className="mr-2" /> },
+  { name: "Projects", path: "/Projects", icon: <FaCode className="mr-2" /> },
+  { name: "Contact", path: "/Contact", icon: <FaPhone className="mr-2" /> },
 ];
 
 const socialLinks = [
   {
     icon: <FaGithub />,
-    url: "https://github.com/yourusername",
+    url: "https://github.com/Bush1122",
     name: "GitHub",
   },
   {
     icon: <FaLinkedin />,
-    url: "https://linkedin.com/in/yourprofile",
+    url: "https://www.linkedin.com/in/bushra-yousaf-9b6675240/",
     name: "LinkedIn",
   },
   {
-    icon: <FaTwitter />,
-    url: "https://twitter.com/yourhandle",
-    name: "Twitter",
+    icon: <FaFacebook />,
+    url: "https://www.facebook.com/ahnhi.malik/",
+    name: "FaceBook",
   },
-  { icon: <FaEnvelope />, url: "mailto:your@email.com", name: "Email" },
+  {
+    icon: <FaEnvelope />,
+    url: "https://mail.google.com/mail/u/0/?tab=km#inbox",
+    name: "Email",
+  },
+  {
+    icon: <FaYoutube />,
+    url: "https://www.youtube.com/@BushraYousaf-p7i",
+    name: "Youtube",
+  },
 ];
 
 export default function Footer() {
@@ -119,15 +132,22 @@ export default function Footer() {
                   key={link.name}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-center"
                 >
+                  <FaChevronRight
+                    className={`mr-2 text-xs ${
+                      theme === "dark" ? "text-yellow-400" : "text-yellow-600"
+                    }`}
+                  />
                   <a
                     href={link.path}
-                    className={`text-base transition-colors ${
+                    className={`text-base transition-colors flex items-center ${
                       theme === "dark"
                         ? "text-gray-400 hover:text-yellow-400"
                         : "text-gray-600 hover:text-yellow-600"
                     }`}
                   >
+                    {link.icon}
                     {link.name}
                   </a>
                 </motion.li>
@@ -144,20 +164,37 @@ export default function Footer() {
             >
               Contact
             </h3>
-            <ul className="mt-4 space-y-2">
-              <li
-                className={`${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                your@email.com
+            <ul className="mt-4 space-y-3">
+              <li className="flex items-start">
+                <FaEnvelope
+                  className={`mt-1 mr-3 ${
+                    theme === "dark" ? "text-yellow-400" : "text-yellow-600"
+                  }`}
+                />
+                <a
+                  href="mailto:smileforbushi@gmail.com"
+                  className={`transition-colors ${
+                    theme === "dark"
+                      ? "text-gray-400 hover:text-yellow-400"
+                      : "text-gray-600 hover:text-yellow-600"
+                  }`}
+                >
+                  smileforbushi@gmail.com
+                </a>
               </li>
-              <li
-                className={`${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                +1 (123) 456-7890
+              <li className="flex items-start">
+                <FaPhone
+                  className={`mt-1 mr-3 ${
+                    theme === "dark" ? "text-yellow-400" : "text-yellow-600"
+                  }`}
+                />
+                <span
+                  className={`${
+                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  +92 348 5377005
+                </span>
               </li>
             </ul>
           </div>

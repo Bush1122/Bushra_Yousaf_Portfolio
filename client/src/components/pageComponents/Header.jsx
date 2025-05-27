@@ -53,7 +53,7 @@ const mobileItem = {
 };
 
 const navLinks = [
-  { path: "/About", name: "About" },
+  { path: "/", name: "About" },
   { path: "/Projects", name: "Projects" },
   { path: "/Service", name: "Service" },
   { path: "/Certificate", name: "Certificate" },
