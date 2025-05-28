@@ -6,7 +6,7 @@ import PhysicsCursor from "../components/ui/PhysicsCursor";
 import ParticleBackground from "../components/experimental/ParticleBackground";
 import ScrollReveal from "../components/animated/ScrollReveal";
 import { useTheme } from "../context/ThemeContext";
-import projects1 from "../asset/images/projects/1.png";
+import projects1 from "../../public/1.png";
 import projects2 from "../asset/images/projects/2.png";
 import projects3 from "../asset/images/projects/3.png";
 import projects4 from "../asset/images/projects/4.png";
@@ -284,7 +284,6 @@ const Projects = () => {
         </ScrollReveal>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
