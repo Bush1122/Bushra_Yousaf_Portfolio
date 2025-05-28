@@ -298,7 +298,7 @@ export default function About() {
                 className="mt-8 text-center"
               >
                 <a
-                  href="/path-to-resume.pdf"
+                  href="/Resume.pdf"
                   download
                   className="inline-flex items-center px-6 py-3 text-sm font-medium text-yellow-700 transition-colors border border-transparent rounded-md shadow-sm bg-yellow-50 hover:bg-yellow-100 dark:text-yellow-50 dark:bg-yellow-900/30 dark:hover:bg-yellow-800/50"
                 >
