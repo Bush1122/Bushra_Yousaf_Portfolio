@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import About from "./pages/About";
 import Certificate from "./pages/Certificate";
 import Service from "./pages/Service";
@@ -13,6 +13,7 @@ function App() {
       <Route path="/Projects" element={<Projects />} />
       <Route path="/Service" element={<Service />} />
       <Route path="/Contact" element={<Contact />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
