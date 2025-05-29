@@ -1,52 +1,21 @@
-// src/components/experimental/ParticleBackground.js
 import { useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
 import { useTheme } from "../../context/ThemeContext";
 
-// Import SVG icons as strings (you'll need to add these)
-const icons = {
-  react: `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><circle cx="64" cy="64" r="11.4" fill="#61dafb"/><path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.7 7.1 2.4-2.2.8-4.5 1.6-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.2-.8 4.5-1.6 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6-3.7.3-7.4.4-11.2.4-3.9 0-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10 1.6-3.3 3.4-6.7 5.3-10 1.8-3.2 3.9-6.4 6.1-9.6 3.7-.3 7.4-.4 11.2-.4 3.9 0 7.6.1 11.2.4 2.2 3.2 4.2 6.4 6.1 9.6 1.9 3.3 3.7 6.7 5.3 10-1.7 3.3-3.4 6.7-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3-3.4.8-7 1.4-10.8 1.9 1.2-1.9 2.5-3.9 3.6-6 1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3 2.3.1 4.6.2 6.9.2 2.3 0 4.6-.1 6.9-.2-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9 1.1-3.3 2.3-6.8 3.8-10.3 1.1 2 2.2 4.1 3.4 6.1 1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3 3.4-.8 7-1.4 10.8-1.9-1.2 1.9-2.5 3.9-3.6 6-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3-2.3-.1-4.6-.2-6.9-.2-2.3 0-4.6.1-6.9.2 2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9-1.1 3.3-2.3 6.8-3.8 10.3-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3 1-.6 2.2-.9 3.5-.9 6 0 13.5 4.9 21 12.3-3.5 3.8-7 8.2-10.4 13-5.8.5-11.3 1.4-16.5 2.5-.6-2.3-1-4.5-1.4-6.6z" fill="#61dafb"/><path d="M64 85.1c-11.6 0-21-9.4-21-21s9.4-21 21-21 21 9.4 21 21-9.4 21-21 21zm0-37.1c-8.9 0-16 7.1-16 16s7.1 16 16 16 16-7.1 16-16-7.1-16-16-16z" fill="#61dafb"/></svg>`,
-  nodejs: `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#83CD29" d="M112.895 30.914L67.175 3.324a7.901 7.901 0 00-7.902 0L13.555 30.914a7.902 7.902 0 00-3.95 6.84v52.492a7.902 7.902 0 003.95 6.84l45.72 27.59a7.902 7.902 0 007.902 0l45.72-27.59a7.902 7.902 0 003.95-6.84V37.754a7.902 7.902 0 00-3.95-6.84zM64 123.07a3.95 3.95 0 01-3.95-3.95v-7.902a3.95 3.95 0 013.95-3.95 3.95 3.95 0 013.95 3.95v7.902A3.95 3.95 0 0164 123.07zm31.6-19.754a3.95 3.95 0 01-3.95 3.95H36.35a3.95 3.95 0 01-3.95-3.95V41.704a3.95 3.95 0 013.95-3.95h55.3a3.95 3.95 0 013.95 3.95v61.612z"/><path fill="#83CD29" d="M64 11.857a3.95 3.95 0 013.95 3.95v7.902a3.95 3.95 0 01-3.95 3.95 3.95 3.95 0 01-3.95-3.95v-7.902a3.95 3.95 0 013.95-3.95z"/><path fill="#fff" d="M64 98.22c-13.856 0-25.13-11.274-25.13-25.13S50.144 47.96 64 47.96s25.13 11.274 25.13 25.13S77.856 98.22 64 98.22zm0-42.36c-9.5 0-17.23 7.73-17.23 17.23s7.73 17.23 17.23 17.23 17.23-7.73 17.23-17.23-7.73-17.23-17.23-17.23z"/><path fill="#fff" d="M64 85.29c-6.765 0-12.27-5.505-12.27-12.27S57.235 60.75 64 60.75s12.27 5.505 12.27 12.27S70.765 85.29 64 85.29zm0-16.54a4.27 4.27 0 100 8.54 4.27 4.27 0 000-8.54z"/></svg>`,
-  tailwind: `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0" fill="#38b2ac"/></svg>`,
-  git: `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#F05133" d="M124.737 58.378L69.621 3.264c-3.172-3.174-8.32-3.174-11.497 0L46.68 14.71l14.518 14.518c3.375-1.139 7.243-.375 9.932 2.314 2.703 2.706 3.461 6.607 2.294 9.993l13.992 13.993c3.385-1.167 7.292-.413 9.994 2.295 3.78 3.777 3.78 9.9 0 13.679-3.78 3.78-9.901 3.78-13.683 0-2.842-2.844-3.545-7.019-2.105-10.521L68.574 47.933l-.002 34.341a9.708 9.708 0 012.559 1.828c3.778 3.777 3.778 9.898 0 13.683-3.779 3.777-9.904 3.777-13.679 0-3.778-3.784-3.778-9.905 0-13.683a9.65 9.65 0 013.167-2.11V47.333a9.581 9.581 0 01-3.167-2.111c-2.862-2.86-3.551-7.06-2.083-10.576L41.056 20.333 3.264 58.123c-3.172 3.172-3.172 8.32 0 11.497l55.117 55.114c3.174 3.174 8.32 3.174 11.499 0l54.858-54.858a8.13 8.13 0 002.473-5.802c0-2.197-.85-4.26-2.473-5.804z"/></svg>`,
-  // Add more icons as needed
+// Pre-loaded SVG data URLs (convert your SVGs to data URLs)
+const iconDataUrls = {
+  react:
+    "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTI4IDEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI2NCIgY3k9IjY0IiByPSIxMS40IiBmaWxsPSIjNjFkYWZiIi8+PHBhdGggZD0iTTEwNy4zIDQ1LjJjLTIuMi0uOC00LjUtMS42LTYuOS0yLjMuNi0yLjQgMS4xLTQuOCAxLjUtNy4xIDIuMS0xMy4yLS4yLTIyLjUtNi42LTI2LjEtMS45LTEuMS00LTEuNi02LjQtMS42LTcgMC0xNS45IDUuMi0yNC45IDEzLjktOS04LjctMTcuOS0xMy45LTI0LjktMTMuOS0yLjQgMC00LjUuNS02LjQgMS42LTYuNCAzLjctOC43IDEzLTYuNiAyNi4xLjQgMi4zLjkgNC43IDEuNyA3LjEgMi40LTIuMi44LTQuNSAxLjYtNi45IDIuM0M4LjIgNTAgMS40IDU2LjYgMS40IDY0czYuOSAxNCAxOS4zIDE4LjhjMi4yLjggNC41IDEuNiA2LjkgMi4zLS42IDIuNC0xLjEgNC44LTEuNSA3LjEtMi4xIDEzLjIuMiAyMi41IDYuNiAyNi4xIDEuOSAxLjEgNCAxLjYgNi40IDEuNiA3LjEgMCAxNi01LjIgMjQuOS0xMy45IDkgOC43IDE3LjkgMTMuOSAyNC45IDEzLjkgMi40IDAgNC41LS41IDYuNC0xLjYgNi40LTMuNyA4LjctMTMgNi42LTI2LjEtLjQtMi4zLS45LTQuNy0xLjUtNy4xIDIuMi0uOCA0LjUtMS42IDYuOS0yLjMgMTIuNS00LjggMTkuMy0xMS40IDE5LjMtMTguOHMtNi44LTE0LTE5LjMtMTguOHpNOTIuNSAxNC43YzQuMSAyLjQgNS41IDkuOCAzLjggMjAuMy0uMyAyLjEtLjggNC4zLTEuNCA2LjYtNS4yLTEuMi0xMC43LTItMTYuNS0yLjUtMy40LTQuOC02LjktOS4xLTEwLjQtMTMgNy40LTcuMyAxNC45LTEyLjMgMjEtMTIuMyAxLjMgMCAyLjUuMyAzLjUuOXpNODEuMyA3NGMtMS44IDMuMi0zLjkgNi40LTYuMSA5LjYtMy43LjMtNy40LjQtMTEuMi40LTMuOSAwLTcuNi0uMS0xMS4yLS40LTIuMi0zLjItNC4yLTYuNC02LTkuNi0xLjktMy4zLTMuNy02LjctNS4zLTEwIDEuNi0zLjMgMy40LTYuNyA1LjMtMTAgMS44LTMuMiAzLjktNi40IDYuMS05LjYgMy43LS4zIDcuNC0uNCAxMS4yLS40IDMuOSAwIDcuNi4xIDExLjIuNCAyLjIgMy4yIDQuMiA2LjQgNi4xIDkuNiAxLjkgMy4zIDMuNyA2LjcgNS4zIDEwLTEuNyAzLjMtMy40IDYuNy01LjMgMTB6bTguMy0zLjNjMS41IDMuNSAyLjcgNi45IDMuOCAxMC4zLTMuNC44LTcgMS40LTEwLjggMS45IDEuMi0xLjkgMi41LTMuOSAzLjYtNiAxLjItMi4xIDIuMy00LjIgMy40LTYuMnptLTguMyAxNi41Yy0yLjQtMi42LTQuNy01LjQtNi45LTguMyAyLjMuMSA0LjYuMiA2LjkuMiAyLjMgMCA0LjYtLjEgNi45LS4yLTIuMiAyLjktNC41IDUuNy02LjkgOC4zem0tMTguNi0xNWMtMy44LS41LTcuNC0xLjEtMTAuOC0xLjkgMS4xLTMuMyAyLjMtNi44IDMuOC0xMC4zIDEuMSAyIDIuMiA0LjEgMy40IDYuMSAxLjIgMi4yIDIuNCA0LjEgMy42IDYuMXptLTctMjUuNWMtMS41LTMuNS0yLjctNi45LTMuOC0xMC4zIDMuNC0uOCA3LTEuNCAxMC44LTEuOS0xLjIgMS45LTIuNSAzLjktMy42IDYtMS4yIDIuMS0yLjMgNC4yLTMuNCA2LjJ6TTY0IDMwLjJjMi40IDIuNiA0LjcgNS40IDYuOSA4LjMtMi4zLS4xLTQuNi0uMi02LjktLjItMi4zIDAtNC42LjEtNi45LjIgMi4yLTIuOSA0LjUtNS43IDYuOS04LjN6bTIyLjIgMjFsLTMuNi02YzMuOC41IDcuNCAxLjEgMTAuOCAxLjktMS4xIDMuMy0yLjMgNi44LTMuOCAxMC4zLTEuMS0yLjEtMi4yLTQuMi0zLjQtNi4yek0zMS43IDM1Yy0xLjctMTAuNS0uMy0xNy45IDMuOC0yMC4zIDEtLjYgMi4yLS45IDMuNS0uOSA2IDAgMTMuNSA0LjkgMjEgMTIuMy0zLjUgMy44LTcgOC4yLTEwLjQgMTMtNS44LjUtMTEuMyAxLjQtMTYuNSAyLjUtLjYtMi4zLTEtNC41LTEuNC02LjZ6IiBmaWxsPSIjNjFkYWZiIi8+PHBhdGggZD0iTTY0IDg1LjFjLTExLjYgMC0yMS05LjQtMjEtMjFzOS40LTIxIDIxLTIxIDIxIDkuNCAyMSAyMS05LjQgMjEtMjEgMjF6bTAtMzcuMWMtOC45IDAtMTYgNy4xLTE2IDE2czcuMSAxNiAxNiAxNiAxNi03LjEgMTYtMTYtNy4xLTE2LTE2LTE2eiIgZmlsbD0iIzYxZGFmYiIvPjwvc3ZnPg==",
+  nodejs:
+    "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTI4IDEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjODNDRDI5IiBkPSJNMTEyLjg5NSAzMC45MTRMNjcuMTc1IDMuMzI0YTcuOTAxIDcuOTAxIDAgMDAtNy45MDIgMEwxMy41NTUgMzAuOTE0YTcuOTAyIDcuOTAyIDAgMDAtMy45NSA2Ljg0djUyLjQ5MmE3LjkwMiA3LjkwMiAwIDAwMy45NSA2Ljg0bDQ1LjcyIDI3LjU5YTcuOTAyIDcuOTAyIDAgMDA3LjkwMiAwbDQ1LjcyLTI3LjU5YTcuOTAyIDcuOTAyIDAgMDAzLjk1LTYuODRWMy43NTRhNy45MDIgNy45MDIgMCAwMC0zLjk1LTYuODR6TTY0IDEyMy4wN2EzLjk1IDMuOTUgMCAwMTMuOTUtMy45NXYtNy45MDJhMy45NSAzLjk1IDAgMDEtMy45NS0zLjk1IDMuOTUgMy45NSAwIDAxLTMuOTUgMy45NXY3LjkwMkEzLjk1IDMuOTUgMCAwMTY0IDEyMy4wN3ptMzEuNi0xOS43NTRhMy45NSAzLjk1IDAgMDEtMy45NSAzLjk1SDM2LjM1YTQuMDQ0IDQuMDQ0IDAgMDEtMy45NS0zLjk1VjQxLjcwNGEzLjk1IDMuOTUgMCAwMTMuOTUtMy45NWg1NS4zYTMuOTUgMy45NSAwIDAxMy45NSAzLjk1djYxLjYxMnoiLz48cGF0aCBmaWxsPSIjODNDRDI5IiBkPSJNNjQgMTEuODU3YTMuOTUgMy45NSAwIDAxMy45NSAzLjk1djcuOTAyYTMuOTUgMy45NSAwIDAxLTMuOTUgMy45NSAzLjk1IDMuOTUgMCAwMS0zLjk1LTMuOTV2LTcuOTAyYTMuOTUgMy45NSAwIDAxMy45NS0zLjk1eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik02NCA5OC4yMmMtMTMuODU2IDAtMjUuMTMtMTEuMjc0LTI1LjEzLTI1LjEzUzUwLjE0NCA0Ny45NiA2NCA0Ny45NnMyNS4xMyAxMS4yNzQgMjUuMTMgMjUuMTNTNzcuODU2IDk4LjIyIDY0IDk4LjIyem0wLTQyLjM2Yy05LjUgMC0xNy4yMyA3LjczLTE3LjIzIDE3LjIzczcuNzMgMTcuMjMgMTcuMjMgMTcuMjMgMTcuMjMtNy43MyAxNy4yMy0xNy4yMy03LjczLTE3LjIzLTE3LjIzLTE3LjIzeiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik02NCA4NS4yOWMtNi43NjUgMC0xMi4yNy01LjUwNS0xMi4yNy0xMi4yN1M1Ny4yMzUgNjAuNzUgNjQgNjAuNzVzMTIuMjcgNS41MDUgMTIuMjcgMTIuMjdTNzAuNzY1IDg1LjI5IDY0IDg1LjI5em0wLTE2LjU0YTQuMjcgNC4yNyAwIDEwMCA4LjU0IDQuMjcgNC4yNyAwIDAwMC04LjU0eiIvPjwvc3ZnPg==",
+  tailwind:
+    "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTI4IDEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNjQuMDA0IDI1LjYwMmMtMTcuMDY3IDAtMjcuNzMgOC41My0zMiAyNS41OTcgNi4zOTgtOC41MzEgMTMuODY3LTExLjczIDIyLjM5OC05LjU5NyA0Ljg3MSAxLjIxNCA4LjM1MiA0Ljc0NiAxMi4yMDcgOC42NkM3Mi44ODMgNTYuNjI5IDgwLjE0NSA2NCA5Ni4wMDQgNjRjMTcuMDY2IDAgMjcuNzMtOC41MzEgMzItMjUuNjAyLTYuMzk5IDguNTM2LTEzLjg2NyAxMS43MzUtMjIuMzk5IDkuNjAyLTQuODctMS4yMTUtOC4zNDctNC43NDYtMTIuMjA3LTguNjYtNi4yNy02LjM2Ny0xMy41My0xMy43MzgtMjkuMzk0LTEzLjczOHpNMzIuMDA0IDY0Yy0xNy4wNjYgMC0yNy43MyA4LjUzMS0zMiAyNS42MDJDNi40MDIgODEuMDY2IDEzLjg3IDc3Ljg2NyAyMi40MDIgODBjNC44NzEgMS4yMTUgOC4zNTIgNC43NDYgMTIuMjA3IDguNjYgNi4yNzQgNi4zNjcgMTMuNTM2IDEzLjczOCAyOS4zOTUgMTMuNzM4IDE3LjA2NiAwIDI3LjczLTguNTMgMzItMjUuNTk3LTYuMzk5IDguNTMxLTEzLjg2NyAxMS43My0yMi4zOTkgOS41OTctNC44Ny0xLjIxNC04LjM0Ny00Ljc0Ni0xMi4yMDctOC42NkM1NS4xMjggNzEuMzcxIDQ3Ljg2OCA2NCAzMi4wMDQgNjR6bTAgMCIgZmlsbD0iIzM4YjJhYyIvPjwvc3ZnPg==",
+  git: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTI4IDEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjRjA1MTMzIiBkPSJNMTI0LjczNyA1OC4zNzhMNjkuNjIxIDMuMjY0Yy0zLjE3Mi0zLjE3NC04LjMyLTMuMTc0LTExLjQ5NyAwTDQ2LjY4IDE0LjcxbDE0LjUxOCAxNC41MThjMy4zNzUtMS4xMzkgNy4yNDMtLjM3NSA5LjkzMiAyLjMxNCAyLjcwMyAyLjcwNiAzLjQ2MSA2LjYwNyAyLjI5NCA5Ljk5M2wxMy45OTIgMTMuOTkzYzMuMzg1LTEuMTY3IDcuMjkyLS40MTMgOS45OTQgMi4yOTUgMy43OCAzLjc3NyAzLjc4IDkuOSAwIDEzLjY3OS0zLjc4IDMuNzgtOS45MDEgMy43OC0xMy42ODMgMC0yLjg0Mi0yLjg0NC0zLjU0NS03LjAxOS0yLjEwNS0xMC41MjFMNjguNTc0IDQ3LjkzM2wtLjAwMiAzNC4zNDFhOS43MDggOS43MDggMCAwMTIuNTU5IDEuODI4YzMuNzc4IDMuNzc3IDMuNzc4IDkuODk4IDAgMTMuNjgzLTMuNzc5IDMuNzc3LTkuOTA0IDMuNzc3LTEzLjY3OSAwLTMuNzc4LTMuNzg0LTMuNzc4LTkuOTA1IDAtMTMuNjgzYTkuNjUgOS42NSAwIDAwMy4xNjctMi4xMVY0Ny4zMzNhOS41ODEgOS41ODEgMCAwMC0zLjE2Ny0yLjExMWMtMi44NjItMi44Ni0zLjU1MS03LjA2LTItMTAuNTc2TDMuMjY0IDU4LjEyM2MtMy4xNzIgMy4xNzItMy4xNzIgOC4zMiAwIDExLjQ5N2w1NS4xMTcgNTUuMTE0YzMuMTc0IDMuMTc0IDguMzIgMy4xNzQgMTEuNDk5IDBsNTQuODU4LTU0Ljg1OGE4LjEzIDguMTMgMCAwMDIuNDczLTUuODAyYzAtMi4xOTctLjg1LTQuMjYtMi40NzMtNS44MDR6Ii8+PC9zdmc+",
 };
 
 const ParticleBackground = ({ particleDensity = 30 }) => {
   const mountRef = useRef(null);
   const { theme } = useTheme();
-
-  // Create a texture loader
-  const textureLoader = useMemo(() => new THREE.TextureLoader(), []);
-
-  // Convert SVG strings to textures
-  const iconTextures = useMemo(() => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 128;
-    canvas.height = 128;
-    const ctx = canvas.getContext("2d");
-
-    return Object.keys(icons).map((iconName) => {
-      // Create a temporary div to parse SVG
-      const div = document.createElement("div");
-      div.innerHTML = icons[iconName];
-      const svg = div.firstChild;
-
-      // Draw SVG to canvas
-      const img = new Image();
-      const svgBlob = new Blob([svg.outerHTML], { type: "image/svg+xml" });
-      const url = URL.createObjectURL(svgBlob);
-
-      img.src = url;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, 128, 128);
-
-      // Create texture from canvas
-      const texture = textureLoader.load(canvas.toDataURL());
-      texture.name = iconName;
-      return texture;
-    });
-  }, [textureLoader]);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -68,13 +37,21 @@ const ParticleBackground = ({ particleDensity = 30 }) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     mountRef.current.appendChild(renderer.domElement);
 
+    // Create texture loader
+    const textureLoader = new THREE.TextureLoader();
+
+    // Load textures from data URLs
+    const textures = Object.values(iconDataUrls).map((url) => {
+      return textureLoader.load(url);
+    });
+
     // Particles configuration
     const particlesCount = Math.min(
       Math.floor((window.innerWidth * window.innerHeight) / 1000),
       particleDensity
     );
 
-    // Create particles with different icons
+    // Create particles
     const particlesGeometry = new THREE.BufferGeometry();
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.1,
@@ -89,11 +66,10 @@ const ParticleBackground = ({ particleDensity = 30 }) => {
     const posArray = new Float32Array(particlesCount * 3);
     const colorArray = new Float32Array(particlesCount * 3);
     const sizeArray = new Float32Array(particlesCount);
-    const textureIndexArray = new Float32Array(particlesCount);
 
     // Theme-based colors
     const mainColor = new THREE.Color(theme === "dark" ? 0xffffff : 0x000000);
-    const accentColor = new THREE.Color(0x61dafb); // React blue for example
+    const accentColor = new THREE.Color(0x61dafb);
 
     for (let i = 0; i < particlesCount; i++) {
       // Position
@@ -101,18 +77,15 @@ const ParticleBackground = ({ particleDensity = 30 }) => {
       posArray[i * 3 + 1] = (Math.random() - 0.5) * 20;
       posArray[i * 3 + 2] = (Math.random() - 0.5) * 20;
 
-      // Color - mix between main and accent color
-      const colorMix = Math.random() * 0.3; // Only slight accent coloring
+      // Color
+      const colorMix = Math.random() * 0.3;
       const color = mainColor.clone().lerp(accentColor, colorMix);
       colorArray[i * 3] = color.r;
       colorArray[i * 3 + 1] = color.g;
       colorArray[i * 3 + 2] = color.b;
 
-      // Size variation
+      // Size
       sizeArray[i] = 0.05 + Math.random() * 0.1;
-
-      // Texture index
-      textureIndexArray[i] = Math.floor(Math.random() * iconTextures.length);
     }
 
     particlesGeometry.setAttribute(
@@ -127,10 +100,6 @@ const ParticleBackground = ({ particleDensity = 30 }) => {
       "size",
       new THREE.BufferAttribute(sizeArray, 1)
     );
-    particlesGeometry.setAttribute(
-      "textureIndex",
-      new THREE.BufferAttribute(textureIndexArray, 1)
-    );
 
     // Create particles system
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -144,32 +113,8 @@ const ParticleBackground = ({ particleDensity = 30 }) => {
     const animate = () => {
       frameId = requestAnimationFrame(animate);
 
-      // Rotate particles
       particles.rotation.x += 0.0005;
       particles.rotation.y += 0.0007;
-
-      // Move particles in a flow field pattern
-      const positions = particlesGeometry.attributes.position.array;
-      for (let i = 0; i < particlesCount; i++) {
-        const i3 = i * 3;
-
-        // Create flowing movement with Perlin-like noise
-        const x = positions[i3];
-        const y = positions[i3 + 1];
-        const z = positions[i3 + 2];
-
-        positions[i3] += Math.sin(y * 0.1) * 0.001;
-        positions[i3 + 1] += Math.cos(x * 0.1) * 0.001;
-        positions[i3 + 2] += Math.sin(z * 0.1) * 0.001;
-
-        // Wrap around edges
-        if (Math.abs(positions[i3]) > 10) positions[i3] = -positions[i3] * 0.9;
-        if (Math.abs(positions[i3 + 1]) > 10)
-          positions[i3 + 1] = -positions[i3 + 1] * 0.9;
-        if (Math.abs(positions[i3 + 2]) > 10)
-          positions[i3 + 2] = -positions[i3 + 2] * 0.9;
-      }
-      particlesGeometry.attributes.position.needsUpdate = true;
 
       renderer.render(scene, camera);
     };
@@ -192,7 +137,7 @@ const ParticleBackground = ({ particleDensity = 30 }) => {
         mountRef.current.removeChild(renderer.domElement);
       }
     };
-  }, [theme, particleDensity, iconTextures]);
+  }, [theme, particleDensity]);
 
   return (
     <div
