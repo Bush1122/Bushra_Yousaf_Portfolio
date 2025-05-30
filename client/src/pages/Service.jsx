@@ -163,7 +163,7 @@ const Service = () => {
                     <img
                       src={service.icon}
                       alt={service.title}
-                      className="object-contain w-12 h-12"
+                      className="object-contain w-12 h-12 rounded-full"
                     />
                   </div>
                   <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
