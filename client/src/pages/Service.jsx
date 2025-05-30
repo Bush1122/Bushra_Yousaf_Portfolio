@@ -7,12 +7,6 @@ import ParticleBackground from "../components/experimental/ParticleBackground";
 import ScrollReveal from "../components/animated/ScrollReveal";
 import { useTheme } from "../context/ThemeContext";
 
-// Import logos (replace with your actual logo paths)
-import mernLogo from "/src/asset/images/Frontend.png";
-import frontendLogo from "../asset/images/Frontend.png";
-import backendLogo from "../asset/images/Backend.png";
-import teachingLogo from "../asset/images/Teaching.png";
-
 const Service = () => {
   const [activeTab, setActiveTab] = useState("all");
   const { theme } = useTheme();
@@ -24,7 +18,7 @@ const Service = () => {
       title: "Frontend Development",
       description:
         "Building responsive, interactive user interfaces with React and modern CSS frameworks",
-      icon: "/src/asset/images/Frontend.png",
+      icon: "/Service/Frontend.png",
       category: "development",
       features: [
         "React.js  Applications",
@@ -40,7 +34,7 @@ const Service = () => {
       title: "Backend Development",
       description:
         "Creating robust server-side applications with Node.js, Express, and database integration",
-      icon: "/src/asset/images/Backend.png",
+      icon: "/Service/Backend.png",
       category: "development",
       features: [
         "RESTful API Development",
@@ -56,7 +50,7 @@ const Service = () => {
       title: "Full-Stack MERN Solutions",
       description:
         "Complete web applications from front to back using MongoDB, Express, React, and Node.js",
-      icon: "/src/asset/images/Mern.png",
+      icon: "/Service/Mern.png",
       category: "development",
       features: [
         "End-to-End Web Applications",
@@ -72,7 +66,7 @@ const Service = () => {
       title: "MERN Stack Mentorship",
       description:
         "Personalized 1-on-1 coaching to master the MERN stack from fundamentals to advanced concepts",
-      icon: teachingLogo,
+      icon: "/Service/Teaching.png",
       category: "education",
       features: [
         "Customized Learning Path",
@@ -89,7 +83,7 @@ const Service = () => {
       title: "Workshops & Training",
       description:
         "Group training sessions for teams looking to upskill in modern web development",
-      icon: "/src/asset/images/Teaching.png",
+      icon: "/Service/Teaching.png",
       category: "education",
       features: [
         "Corporate Training Programs",
