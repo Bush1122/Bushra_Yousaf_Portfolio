@@ -8,7 +8,7 @@ import ScrollReveal from "../components/animated/ScrollReveal";
 import { useTheme } from "../context/ThemeContext";
 
 // Import logos (replace with your actual logo paths)
-import mernLogo from "../asset/images/Mern.png";
+import mernLogo from "/src/asset/images/Frontend.png";
 import frontendLogo from "../asset/images/Frontend.png";
 import backendLogo from "../asset/images/Backend.png";
 import teachingLogo from "../asset/images/Teaching.png";
@@ -24,7 +24,7 @@ const Service = () => {
       title: "Frontend Development",
       description:
         "Building responsive, interactive user interfaces with React and modern CSS frameworks",
-      icon: frontendLogo,
+      icon: "/src/asset/images/Frontend.png",
       category: "development",
       features: [
         "React.js  Applications",
@@ -40,7 +40,7 @@ const Service = () => {
       title: "Backend Development",
       description:
         "Creating robust server-side applications with Node.js, Express, and database integration",
-      icon: backendLogo,
+      icon: "/src/asset/images/Backend.png",
       category: "development",
       features: [
         "RESTful API Development",
@@ -56,7 +56,7 @@ const Service = () => {
       title: "Full-Stack MERN Solutions",
       description:
         "Complete web applications from front to back using MongoDB, Express, React, and Node.js",
-      icon: mernLogo,
+      icon: "/src/asset/images/Mern.png",
       category: "development",
       features: [
         "End-to-End Web Applications",
@@ -89,7 +89,7 @@ const Service = () => {
       title: "Workshops & Training",
       description:
         "Group training sessions for teams looking to upskill in modern web development",
-      icon: teachingLogo,
+      icon: "/src/asset/images/Teaching.png",
       category: "education",
       features: [
         "Corporate Training Programs",
