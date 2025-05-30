@@ -8,10 +8,10 @@ import ScrollReveal from "../components/animated/ScrollReveal";
 import { useTheme } from "../context/ThemeContext";
 
 // Import logos (replace with your actual logo paths)
-import mernLogo from "../asset/images/projects/1.png";
-import frontendLogo from "../asset/images/projects/1.png";
-import backendLogo from "../asset/images/projects/1.png";
-import teachingLogo from "../asset/images/projects/1.png";
+import mernLogo from "../asset/images/Mern.png";
+import frontendLogo from "../asset/images/Frontend.png";
+import backendLogo from "../asset/images/Backend.png";
+import teachingLogo from "../asset/images/Teaching.png";
 
 const Service = () => {
   const [activeTab, setActiveTab] = useState("all");

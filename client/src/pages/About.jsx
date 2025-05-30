@@ -4,7 +4,7 @@ import Footer from "../components/pageComponents/Footer";
 import PhysicsCursor from "../components/ui/PhysicsCursor";
 import ParticleBackground from "../components/experimental/ParticleBackground";
 import ScrollReveal from "../components/animated/ScrollReveal";
-import profileImage from "../asset/images/projects/PersonalProfile.png";
+import profileImage from "../asset/images/PersonalProfile.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 
