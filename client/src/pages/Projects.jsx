@@ -6,18 +6,6 @@ import PhysicsCursor from "../components/ui/PhysicsCursor";
 import ParticleBackground from "../components/experimental/ParticleBackground";
 import ScrollReveal from "../components/animated/ScrollReveal";
 import { useTheme } from "../context/ThemeContext";
-import projects1 from "/images/1.png";
-import projects2 from "/images/2.png";
-import projects3 from "/images/3.png";
-import projects4 from "/images/4.png";
-import projects5 from "/images/5.png";
-import projects6 from "/images/6.png";
-import projects7 from "/images/7.png";
-import projects8 from "/images/8.png";
-import projects9 from "/images/9.png";
-import projects10 from "/images/10.png";
-import projects11 from "/images/11.png";
-import projects12 from "/images/12.png";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -28,9 +16,7 @@ const Projects = () => {
     {
       id: 1,
       title: "Ableton",
-      description:
-        "Ableton Live is a software music sequencer and digital audio workstation (DAW) for macOS and Windows. ",
-      image: projects1,
+      image: "/images/1.png ",
       technologies: ["HTML", "CSS", "JavaScript"],
       category: "JavaScript",
       link: "https://github.com/Bush1122/Ableton.git",
@@ -40,7 +26,7 @@ const Projects = () => {
       title: "Constra",
       description:
         "Together, using technologies like HTML, CSS, Bootstrap, and React.js, we enhanced workflow efficiency and user experience, paving the way for seamless intern onboarding and management ",
-      image: projects2,
+      image: "/images/2.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-javascript-html-activity-7218691521133371392-2TgT?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
@@ -49,7 +35,7 @@ const Projects = () => {
       id: 3,
       title: "Namud-e-Sehar Foundation",
       description: "Drag and drop task board with user authentication",
-      image: projects3,
+      image: "/images/3.png",
       technologies: ["React", "Node.js", "Express"],
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
@@ -58,7 +44,7 @@ const Projects = () => {
       id: 4,
       title: "Pluse",
       description: "Menu display with online reservation system",
-      image: projects4,
+      image: "/images/4.png",
       technologies: ["HTML", "Bootstrap", "JavaScript"],
       category: "JavaScript",
       link: "https://github.com/Bush1122/Pluse.git",
@@ -67,7 +53,7 @@ const Projects = () => {
       id: 5,
       title: "Online Store",
       description: "Real-time weather data with 5-day forecast",
-      image: projects5,
+      image: "/images/5.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
       link: "#",
@@ -76,7 +62,7 @@ const Projects = () => {
       id: 6,
       title: "ATS CV Checker",
       description: "Analytics dashboard with interactive charts",
-      image: projects6,
+      image: "/images/6.png",
       technologies: ["HTML", "Bootstrap", "JavaScript"],
       category: "React",
       link: "https://www.facebook.com/share/r/19CXvwUVnF/",
@@ -85,7 +71,7 @@ const Projects = () => {
       id: 7,
       title: "Online Quran Service",
       description: "Marketing landing page with animated sections",
-      image: projects7,
+      image: "/images/7.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
@@ -94,7 +80,7 @@ const Projects = () => {
       id: 8,
       title: "Travel Ticket(CRUD)",
       description: "Complete admin panel with CRUD operations",
-      image: projects8,
+      image: "/images/8.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "Redux",
       link: "https://youtu.be/tK-2LOAWgzg?si=TXMQ-Irp169xB23_",
@@ -103,7 +89,7 @@ const Projects = () => {
       id: 9,
       title: "Notepad App",
       description: "Complete admin panel with CRUD operations",
-      image: projects10,
+      image: "/images/10.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
@@ -113,7 +99,7 @@ const Projects = () => {
       id: 10,
       title: "CRUD operations",
       description: "Complete admin panel with CRUD operations",
-      image: projects11,
+      image: "/images/11.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7228362366478909440-PiGQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
@@ -122,7 +108,7 @@ const Projects = () => {
       id: 11,
       title: "User App",
       description: "Complete admin panel with CRUD operations",
-      image: projects12,
+      image: "/images/12.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-fullstackdevelopment-javascript-activity-7236337059467063298-1vpQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
