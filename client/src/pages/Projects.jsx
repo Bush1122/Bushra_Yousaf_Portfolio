@@ -23,8 +23,7 @@ const Projects = () => {
     {
       id: 2,
       title: "Constra",
-      description:
-        "Together, using technologies like HTML, CSS, Bootstrap, and React.js, we enhanced workflow efficiency and user experience.",
+      description: "Enhanced workflow using HTML, CSS, Bootstrap, React.js",
       image: "/images/2.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
@@ -33,7 +32,7 @@ const Projects = () => {
     {
       id: 3,
       title: "Namud-e-Sehar Foundation",
-      description: "Drag and drop task board with user authentication",
+      description: "Drag and drop task board with authentication",
       image: "/images/3.png",
       technologies: ["React", "Node.js", "Express"],
       category: "React",
@@ -42,7 +41,7 @@ const Projects = () => {
     {
       id: 4,
       title: "Pluse",
-      description: "Menu display with online reservation system",
+      description: "Online reservation system",
       image: "/images/4.png",
       technologies: ["HTML", "Bootstrap", "JavaScript"],
       category: "JavaScript",
@@ -51,7 +50,7 @@ const Projects = () => {
     {
       id: 5,
       title: "Online Store",
-      description: "Real-time weather data with 5-day forecast",
+      description: "Weather data with 5-day forecast",
       image: "/images/5.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
@@ -60,7 +59,7 @@ const Projects = () => {
     {
       id: 6,
       title: "ATS CV Checker",
-      description: "Analytics dashboard with interactive charts",
+      description: "Dashboard with interactive charts",
       image: "/images/6.png",
       technologies: ["HTML", "Bootstrap", "JavaScript"],
       category: "React",
@@ -69,7 +68,7 @@ const Projects = () => {
     {
       id: 7,
       title: "Online Quran Service",
-      description: "Marketing landing page with animated sections",
+      description: "Marketing landing page with animations",
       image: "/images/7.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
@@ -77,8 +76,8 @@ const Projects = () => {
     },
     {
       id: 8,
-      title: "Travel Ticket(CRUD)",
-      description: "Complete admin panel with CRUD operations",
+      title: "Travel Ticket (CRUD)",
+      description: "Admin panel with CRUD",
       image: "/images/8.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "Redux",
@@ -87,7 +86,7 @@ const Projects = () => {
     {
       id: 9,
       title: "Notepad App",
-      description: "Complete admin panel with CRUD operations",
+      description: "CRUD with Node.js and MongoDB",
       image: "/images/10.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
@@ -96,7 +95,7 @@ const Projects = () => {
     {
       id: 10,
       title: "CRUD operations",
-      description: "Complete admin panel with CRUD operations",
+      description: "Full CRUD admin panel",
       image: "/images/11.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
@@ -105,7 +104,7 @@ const Projects = () => {
     {
       id: 11,
       title: "User App",
-      description: "Complete admin panel with CRUD operations",
+      description: "Admin panel for users",
       image: "/images/12.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
@@ -134,29 +133,32 @@ const Projects = () => {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      {/* Background and cursor effects */}
-      <ParticleBackground particleDensity={80} />
+      {/* Background effects - keep behind content */}
+      <div className="absolute top-0 left-0 w-full h-full -z-10">
+        <ParticleBackground particleDensity={80} />
+      </div>
+
       <PhysicsCursor />
 
       {/* Header */}
       <Header />
 
-      {/* Main content */}
-      <main className="container relative z-10 px-6 py-20 mx-auto">
+      {/* Main Content */}
+      <main className="container relative z-20 px-4 py-10 mx-auto">
         <ScrollReveal delay={0.2}>
-          <div className="mb-12 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+          {/* Title */}
+          <div className="mb-10 text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
               My Projects
             </h1>
             <div className="w-20 h-1 mx-auto my-4 bg-gradient-to-r from-yellow-400 to-yellow-600" />
             <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
-              Here are some of my completed projects showcasing different
-              technologies and skills
+              Projects showcasing different technologies and skills.
             </p>
           </div>
 
-          {/* Filter buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {/* Filters */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
             {filters.map((filter) => (
               <motion.button
                 key={filter}
@@ -174,8 +176,8 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* Projects grid */}
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Project Grid */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence>
               {filteredProjects.map((project) => (
                 <motion.div
@@ -252,14 +254,14 @@ const Projects = () => {
             </AnimatePresence>
           </div>
 
-          {/* Empty state */}
+          {/* No Projects */}
           {filteredProjects.length === 0 && (
             <div className="py-12 text-center">
               <h3 className="text-xl font-medium text-gray-700 dark:text-gray-300">
                 No projects found for this filter
               </h3>
               <p className="mt-2 text-gray-500 dark:text-gray-400">
-                Try selecting a different technology filter
+                Try a different technology filter
               </p>
             </div>
           )}
