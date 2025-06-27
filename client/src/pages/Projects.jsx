@@ -8,7 +8,6 @@ import ScrollReveal from "../components/animated/ScrollReveal";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-
   const projects = [
     {
       id: 1,
@@ -123,41 +122,28 @@ const Projects = () => {
         );
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900">
-      {/* Background Effects */}
+    <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="absolute inset-0 -z-10">
         <ParticleBackground />
       </div>
       <PhysicsCursor />
-
-      {/* Header */}
       <Header />
 
-      {/* Main Content */}
-      <main className="container relative z-20 px-4 py-12 mx-auto mt-12">
+      <main className="container relative z-20 px-4 py-8 mx-auto">
         <ScrollReveal delay={0.2}>
-          {/* Heading */}
-          <div className="mb-10 text-center">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-              My Projects
-            </h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-300">
-              A collection of my work in different technologies
-            </p>
-          </div>
+          <h1 className="mb-4 text-3xl font-bold text-center">My Projects</h1>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
             {filters.map((filter) => (
               <motion.button
                 key={filter}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 text-sm font-medium rounded ${
+                className={`px-3 py-1 text-sm rounded ${
                   activeFilter === filter
                     ? "bg-yellow-500 text-white"
-                    : "bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                    : "bg-gray-200"
                 }`}
               >
                 {filter}
@@ -165,60 +151,42 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project) => (
-              <motion.div
+              <div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="overflow-hidden transition-shadow bg-white rounded-lg shadow-lg dark:bg-gray-800 hover:shadow-xl"
+                className="overflow-hidden bg-white rounded shadow dark:bg-gray-800"
               >
-                <div className="overflow-hidden h-52 sm:h-60 lg:h-64">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="object-cover w-full h-48"
+                />
+                <div className="p-4">
+                  <h3 className="mb-2 text-lg font-semibold">
                     {project.title}
                   </h3>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-4 py-2 text-sm text-white transition bg-yellow-500 rounded hover:bg-yellow-600"
+                    className="text-sm text-blue-500 hover:underline"
                   >
                     View Project
                   </a>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* No Projects Found */}
           {filteredProjects.length === 0 && (
-            <div className="mt-10 text-center text-gray-600 dark:text-gray-300">
-              No projects found for this filter.
+            <div className="py-10 text-center text-gray-600">
+              No projects found.
             </div>
           )}
         </ScrollReveal>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
