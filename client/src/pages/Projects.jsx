@@ -131,7 +131,15 @@ const Projects = () => {
 
       <main className="container relative z-20 px-4 py-8 mx-auto">
         <ScrollReveal delay={0.2}>
-          <h1 className="mb-4 text-3xl font-bold text-center">My Projects</h1>
+          <div className="mt-12 mb-10 text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+              My Projects
+            </h1>
+            <div className="w-20 h-1 mx-auto my-4 bg-gradient-to-r from-yellow-400 to-yellow-600" />
+            <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+              Projects showcasing different technologies and skills.
+            </p>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {filters.map((filter) => (
@@ -143,7 +151,7 @@ const Projects = () => {
                 className={`px-3 py-1 text-sm rounded ${
                   activeFilter === filter
                     ? "bg-yellow-500 text-white"
-                    : "bg-gray-200"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                 }`}
               >
                 {filter}
@@ -153,35 +161,69 @@ const Projects = () => {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project) => (
-              <div
+              <motion.div
                 key={project.id}
-                className="overflow-hidden bg-white rounded shadow dark:bg-gray-800"
+                whileHover={{ y: -5 }}
+                className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md dark:bg-gray-800 hover:shadow-lg dark:hover:shadow-gray-700/50"
               >
                 <img
                   src={project.image}
                   alt={project.title}
                   className="object-cover w-full h-48"
                 />
-                <div className="p-4">
-                  <h3 className="mb-2 text-lg font-semibold">
+
+                <div className="p-5">
+                  <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
                     {project.title}
                   </h3>
+
+                  {project.description && (
+                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                      {project.description}
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs font-medium text-white bg-gray-800 rounded-full dark:bg-gray-700"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-500 hover:underline"
+                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition-colors duration-300 bg-yellow-600 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
                   >
                     View Project
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4 ml-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {filteredProjects.length === 0 && (
-            <div className="py-10 text-center text-gray-600">
-              No projects found.
+            <div className="py-10 text-center text-gray-600 dark:text-gray-400">
+              No projects found matching the selected filter.
             </div>
           )}
         </ScrollReveal>
