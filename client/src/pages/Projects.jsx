@@ -21,26 +21,92 @@ const Projects = () => {
     {
       id: 2,
       title: "Constra",
+      description: "Enhanced workflow using HTML, CSS, Bootstrap, React.js",
       image: "/images/2.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
-      link: "https://linkedin.com",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-javascript-html-activity-7218691521133371392-2TgT",
     },
     {
       id: 3,
-      title: "Namud-e-Sehar",
+      title: "Namud-e-Sehar Foundation",
+      description: "Drag and drop task board with authentication",
       image: "/images/3.png",
-      technologies: ["React", "Node.js"],
+      technologies: ["React", "Node.js", "Express"],
       category: "React",
-      link: "https://linkedin.com",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT",
     },
     {
       id: 4,
       title: "Pluse",
+      description: "Online reservation system",
       image: "/images/4.png",
       technologies: ["HTML", "Bootstrap", "JavaScript"],
       category: "JavaScript",
       link: "https://github.com/Bush1122/Pluse.git",
+    },
+    {
+      id: 5,
+      title: "Online Store",
+      description: "Weather data with 5-day forecast",
+      image: "/images/5.png",
+      technologies: ["HTML", "Bootstrap", "React"],
+      category: "React",
+      link: "#",
+    },
+    {
+      id: 6,
+      title: "ATS CV Checker",
+      description: "Dashboard with interactive charts",
+      image: "/images/6.png",
+      technologies: ["HTML", "Bootstrap", "JavaScript"],
+      category: "React",
+      link: "https://www.facebook.com/share/r/19CXvwUVnF/",
+    },
+    {
+      id: 7,
+      title: "Online Quran Service",
+      description: "Marketing landing page with animations",
+      image: "/images/7.png",
+      technologies: ["HTML", "Bootstrap", "React"],
+      category: "React",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F",
+    },
+    {
+      id: 8,
+      title: "Travel Ticket (CRUD)",
+      description: "Admin panel with CRUD",
+      image: "/images/8.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      category: "Redux",
+      link: "https://youtu.be/tK-2LOAWgzg?si=TXMQ-Irp169xB23_",
+    },
+    {
+      id: 9,
+      title: "Notepad App",
+      description: "CRUD with Node.js and MongoDB",
+      image: "/images/10.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      category: "React",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe",
+    },
+    {
+      id: 10,
+      title: "CRUD operations",
+      description: "Full CRUD admin panel",
+      image: "/images/11.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      category: "React",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7228362366478909440-PiGQ",
+    },
+    {
+      id: 11,
+      title: "User App",
+      description: "Admin panel for users",
+      image: "/images/12.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      category: "React",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-fullstackdevelopment-javascript-activity-7236337059467063298-1vpQ",
     },
   ];
 
@@ -57,28 +123,41 @@ const Projects = () => {
         );
 
   return (
-    <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="relative min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900">
+      {/* Background Effects */}
       <div className="absolute inset-0 -z-10">
         <ParticleBackground />
       </div>
       <PhysicsCursor />
+
+      {/* Header */}
       <Header />
 
-      <main className="container relative z-20 px-4 py-8 mx-auto">
+      {/* Main Content */}
+      <main className="container relative z-20 px-4 py-12 mx-auto mt-12">
         <ScrollReveal delay={0.2}>
-          <h1 className="mb-4 text-3xl font-bold text-center">My Projects</h1>
+          {/* Heading */}
+          <div className="mb-10 text-center">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+              My Projects
+            </h1>
+            <p className="mt-2 text-gray-600 dark:text-gray-300">
+              A collection of my work in different technologies
+            </p>
+          </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
             {filters.map((filter) => (
               <motion.button
                 key={filter}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-3 py-1 text-sm rounded ${
+                className={`px-4 py-2 text-sm font-medium rounded ${
                   activeFilter === filter
                     ? "bg-yellow-500 text-white"
-                    : "bg-gray-200"
+                    : "bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
                 }`}
               >
                 {filter}
@@ -86,42 +165,60 @@ const Projects = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project) => (
-              <div
+              <motion.div
                 key={project.id}
-                className="overflow-hidden bg-white rounded shadow dark:bg-gray-800"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden transition-shadow bg-white rounded-lg shadow-lg dark:bg-gray-800 hover:shadow-xl"
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover w-full h-48"
-                />
-                <div className="p-4">
-                  <h3 className="mb-2 text-lg font-semibold">
+                <div className="overflow-hidden h-52 sm:h-60 lg:h-64">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
                     {project.title}
                   </h3>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-500 hover:underline"
+                    className="inline-block px-4 py-2 text-sm text-white transition bg-yellow-500 rounded hover:bg-yellow-600"
                   >
                     View Project
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
+          {/* No Projects Found */}
           {filteredProjects.length === 0 && (
-            <div className="py-10 text-center text-gray-600">
-              No projects found.
+            <div className="mt-10 text-center text-gray-600 dark:text-gray-300">
+              No projects found for this filter.
             </div>
           )}
         </ScrollReveal>
       </main>
 
+      {/* Footer */}
       <Footer />
     </div>
   );
