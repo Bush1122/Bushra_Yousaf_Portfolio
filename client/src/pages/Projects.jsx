@@ -11,12 +11,11 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const { theme } = useTheme();
 
-  // Projects data
   const projects = [
     {
       id: 1,
       title: "Ableton",
-      image: "/images/1.png ",
+      image: "/images/1.png",
       technologies: ["HTML", "CSS", "JavaScript"],
       category: "JavaScript",
       link: "https://github.com/Bush1122/Ableton.git",
@@ -25,11 +24,11 @@ const Projects = () => {
       id: 2,
       title: "Constra",
       description:
-        "Together, using technologies like HTML, CSS, Bootstrap, and React.js, we enhanced workflow efficiency and user experience, paving the way for seamless intern onboarding and management ",
+        "Together, using technologies like HTML, CSS, Bootstrap, and React.js, we enhanced workflow efficiency and user experience.",
       image: "/images/2.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-javascript-html-activity-7218691521133371392-2TgT?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-javascript-html-activity-7218691521133371392-2TgT",
     },
     {
       id: 3,
@@ -38,7 +37,7 @@ const Projects = () => {
       image: "/images/3.png",
       technologies: ["React", "Node.js", "Express"],
       category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT",
     },
     {
       id: 4,
@@ -74,7 +73,7 @@ const Projects = () => {
       image: "/images/7.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F",
     },
     {
       id: 8,
@@ -92,9 +91,8 @@ const Projects = () => {
       image: "/images/10.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe",
     },
-
     {
       id: 10,
       title: "CRUD operations",
@@ -102,7 +100,7 @@ const Projects = () => {
       image: "/images/11.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7228362366478909440-PiGQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7228362366478909440-PiGQ",
     },
     {
       id: 11,
@@ -111,11 +109,19 @@ const Projects = () => {
       image: "/images/12.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-fullstackdevelopment-javascript-activity-7236337059467063298-1vpQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvmJloB5oqfAXr0_nhkrVq7r_y9r_fyejk",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-fullstackdevelopment-javascript-activity-7236337059467063298-1vpQ",
     },
   ];
 
-  // Filter projects based on active filter
+  const filters = [
+    "All",
+    "React",
+    "Redux",
+    "JavaScript",
+    "Bootstrap",
+    "Node.js",
+  ];
+
   const filteredProjects =
     activeFilter === "All"
       ? projects
@@ -125,16 +131,6 @@ const Projects = () => {
               tech.toLowerCase().includes(activeFilter.toLowerCase())
             ) || project.category.toLowerCase() === activeFilter.toLowerCase()
         );
-
-  // Available filters
-  const filters = [
-    "All",
-    "React",
-    "Redux",
-    "JavaScript",
-    "Bootstrap",
-    "Node.js",
-  ];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -214,12 +210,12 @@ const Projects = () => {
                     <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
                       {project.title}
                     </h3>
-
                     <div className="flex justify-between">
                       <motion.a
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         href={project.link}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="px-4 py-2 text-sm font-medium text-white transition-all bg-yellow-500 rounded-md hover:bg-yellow-600"
                       >
