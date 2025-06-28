@@ -163,21 +163,23 @@ const Projects = () => {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="overflow-hidden bg-white rounded shadow dark:bg-gray-800"
+                className="flex flex-col overflow-hidden bg-white rounded shadow dark:bg-gray-800"
               >
+                {/* Project Image */}
                 <img
                   src={project.image}
                   alt={project.title}
                   className="object-cover w-full h-48"
                 />
 
-                <div className="p-4 flex flex-col justify-between">
-                  {/* Project Title */}
-                  <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-gray-100">
+                {/* Project Content */}
+                <div className="p-4 flex flex-col justify-between flex-grow">
+                  {/* Title */}
+                  <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
                     {project.title}
                   </h3>
 
-                  {/* Technologies Used */}
+                  {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, index) => (
                       <span
@@ -189,27 +191,26 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* View Project Button */}
-                  <div className="mt-auto">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block w-full md:w-auto text-center px-4 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out"
-                    >
-                      View Project
-                    </a>
-                  </div>
+                  {/* View Button */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block w-full text-center px-4 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out"
+                  >
+                    View Project
+                  </a>
                 </div>
               </div>
             ))}
-          </div>
 
-          {filteredProjects.length === 0 && (
-            <div className="py-10 text-center text-gray-600">
-              No projects found.
-            </div>
-          )}
+            {/* If No Projects */}
+            {filteredProjects.length === 0 && (
+              <div className="col-span-full text-center text-gray-500">
+                No projects found.
+              </div>
+            )}
+          </div>
         </ScrollReveal>
       </main>
 
