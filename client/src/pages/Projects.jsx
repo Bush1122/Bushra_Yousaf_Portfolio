@@ -58,8 +58,8 @@ const Projects = () => {
       title: "ATS CV Checker",
       description: "Dashboard with interactive charts",
       image: "/images/6.png",
-      technologies: ["HTML", "Bootstrap", "JavaScript"],
-      category: "React",
+      technologies: ["HTML", "Bootstrap", "JavaScript", "php"],
+      category: "php",
       link: "https://www.facebook.com/share/r/19CXvwUVnF/",
     },
     {
@@ -109,7 +109,7 @@ const Projects = () => {
     },
   ];
 
-  const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js"];
+  const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
 
   const filteredProjects =
     activeFilter === "All"
@@ -171,19 +171,21 @@ const Projects = () => {
                   className="object-cover w-full h-48"
                 />
 
-                <div className="p-4">
-                  <h3 className="mb-2 text-lg font-semibold">
+                <div className="p-4 flex flex-col justify-between h-full">
+                  <h3 className="mb-3 text-xl font-bold text-gray-800 dark:text-gray-100">
                     {project.title}
                   </h3>
 
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-blue-500 hover:underline"
-                  >
-                    View Project
-                  </a>
+                  <div className="mt-auto">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block w-full md:w-auto text-center px-4 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out"
+                    >
+                      View Project
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
