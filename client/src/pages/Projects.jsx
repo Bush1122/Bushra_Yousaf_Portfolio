@@ -163,40 +163,40 @@ const Projects = () => {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="flex flex-col overflow-hidden bg-white rounded shadow dark:bg-gray-800"
+                className="overflow-hidden bg-white rounded shadow dark:bg-gray-800 flex flex-col"
               >
-                {/* Project Image */}
                 <img
                   src={project.image}
                   alt={project.title}
                   className="object-cover w-full h-48"
                 />
 
-                {/* Project Content */}
-                <div className="p-4 flex flex-col justify-between flex-grow">
+                <div className="p-4 flex flex-col flex-grow">
                   {/* Title */}
                   <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
                     {project.title}
                   </h3>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-100 rounded dark:bg-yellow-700 dark:text-white"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {project.technologies && project.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-100 rounded dark:bg-yellow-700 dark:text-white"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   {/* View Button */}
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-full text-center px-4 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out"
+                    className="inline-block w-full text-center px-4 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out mt-auto"
                   >
                     View Project
                   </a>
