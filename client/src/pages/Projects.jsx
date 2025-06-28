@@ -131,7 +131,7 @@ const Projects = () => {
 
       <main className="container relative z-20 px-4 py-8 mx-auto">
         <ScrollReveal delay={0.2}>
-          <div className="mt-12 mb-10 text-center">
+          <div className="mb-10 text-center mt-14">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
               My Projects
             </h1>
@@ -164,58 +164,73 @@ const Projects = () => {
               <motion.div
                 key={project.id}
                 whileHover={{ y: -5 }}
-                className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md dark:bg-gray-800 hover:shadow-lg dark:hover:shadow-gray-700/50"
+                className="overflow-hidden bg-white rounded-lg shadow dark:bg-gray-800"
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover w-full h-48"
-                />
-
-                <div className="p-5">
+                <div className="relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="object-cover w-full h-48"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-xs font-medium text-white bg-black rounded-full bg-opacity-70"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
                   <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
                     {project.title}
                   </h3>
-
                   {project.description && (
                     <p className="mb-4 text-gray-600 dark:text-gray-300">
                       {project.description}
                     </p>
                   )}
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs font-medium text-white bg-gray-800 rounded-full dark:bg-gray-700"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition-colors duration-300 bg-yellow-600 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
-                  >
-                    View Project
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 h-4 ml-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                  <div className="flex justify-between">
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 text-sm font-medium text-white transition-all bg-yellow-500 rounded-md hover:bg-yellow-600"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </a>
+                      View Project
+                    </motion.a>
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 transition-all bg-gray-100 rounded-md dark:text-gray-300 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
+                    >
+                      Code
+                      <svg
+                        className="w-4 h-4 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                        />
+                      </svg>
+                    </motion.a>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -223,7 +238,7 @@ const Projects = () => {
 
           {filteredProjects.length === 0 && (
             <div className="py-10 text-center text-gray-600 dark:text-gray-400">
-              No projects found matching the selected filter.
+              No projects found.
             </div>
           )}
         </ScrollReveal>
