@@ -80,6 +80,15 @@ const Projects = () => {
       category: "Redux",
       link: "https://youtu.be/tK-2LOAWgzg?si=TXMQ-Irp169xB23_",
     },
+    {
+      id: 9,
+      title: "Notepad App",
+      description: "CRUD with Node.js and MongoDB",
+      image: "/images/10.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      category: "Node.js",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
