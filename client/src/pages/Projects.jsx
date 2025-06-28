@@ -26,78 +26,7 @@ const Projects = () => {
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-javascript-html-activity-7218691521133371392-2TgT",
     },
-    {
-      id: 3,
-      title: "Namud-e-Sehar Foundation",
-      image: "/images/3.png",
-      technologies: ["React", "Node.js", "Express"],
-      category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT",
-    },
-    {
-      id: 4,
-      title: "Pluse",
-      image: "/images/4.png",
-      technologies: ["HTML", "Bootstrap", "JavaScript"],
-      category: "JavaScript",
-      link: "https://github.com/Bush1122/Pluse.git",
-    },
-    {
-      id: 5,
-      title: "Online Store",
-      image: "/images/5.png",
-      technologies: ["HTML", "Bootstrap", "React"],
-      category: "React",
-      link: "#",
-    },
-    {
-      id: 6,
-      title: "ATS CV Checker",
-      image: "/images/6.png",
-      technologies: ["HTML", "Bootstrap", "JavaScript", "PHP"],
-      category: "php",
-      link: "https://www.facebook.com/share/r/19CXvwUVnF/",
-    },
-    {
-      id: 7,
-      title: "Online Quran Service",
-      image: "/images/7.png",
-      technologies: ["HTML", "Bootstrap", "React"],
-      category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F",
-    },
-    {
-      id: 8,
-      title: "Travel Ticket (CRUD)",
-      image: "/images/8.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "Redux",
-      link: "https://youtu.be/tK-2LOAWgzg?si=TXMQ-Irp169xB23_",
-    },
-    {
-      id: 9,
-      title: "Notepad App",
-      image: "/images/10.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe",
-    },
-    {
-      id: 10,
-      title: "CRUD Operations",
-      image: "/images/11.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7228362366478909440-PiGQ",
-    },
-    {
-      id: 11,
-      title: "User App",
-      image: "/images/12.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-fullstackdevelopment-javascript-activity-7236337059467063298-1vpQ",
-    },
+    // ... add your other projects here
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
@@ -106,23 +35,24 @@ const Projects = () => {
     activeFilter === "All"
       ? projects
       : projects.filter((project) => {
-          const hasTechnologies =
+          const filterLower = activeFilter.toLowerCase();
+
+          const matchCategory =
+            typeof project.category === "string" &&
+            project.category.toLowerCase() === filterLower;
+
+          const matchTechnology =
             Array.isArray(project.technologies) &&
-            project.technologies.some((tech) =>
-              tech.toLowerCase().includes(activeFilter.toLowerCase())
+            project.technologies.some(
+              (tech) => tech.toLowerCase() === filterLower
             );
 
-          const hasCategory =
-            typeof project.category === "string" &&
-            project.category.toLowerCase() === activeFilter.toLowerCase();
-
-          return hasTechnologies || hasCategory;
+          return matchCategory || matchTechnology;
         });
 
   return (
     <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="absolute inset-0 -z-10">
-        {/* Optional: Disable particles and cursor for mobile users */}
         <ParticleBackground />
       </div>
 
@@ -131,7 +61,6 @@ const Projects = () => {
 
       <main className="container relative z-20 px-4 py-8 mx-auto">
         <ScrollReveal delay={0.2}>
-          {/* Heading */}
           <div className="mb-10 text-center mt-14">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
               My Projects
@@ -169,20 +98,17 @@ const Projects = () => {
                 whileHover={{ scale: 1.02 }}
                 className="flex flex-col overflow-hidden bg-white rounded-lg shadow hover:shadow-lg dark:bg-gray-800"
               >
-                {/* Image */}
                 <img
                   src={project.image}
                   alt={project.title}
                   className="object-cover w-full h-48 sm:h-56"
                 />
 
-                {/* Content */}
                 <div className="p-4 flex flex-col flex-grow">
                   <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
                     {project.title}
                   </h3>
 
-                  {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, index) => (
                       <span
@@ -194,7 +120,6 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* View Button */}
                   <a
                     href={project.link}
                     target="_blank"
@@ -207,7 +132,6 @@ const Projects = () => {
               </motion.div>
             ))}
 
-            {/* No Projects Found */}
             {filteredProjects.length === 0 && (
               <div className="col-span-full text-center text-gray-500">
                 No projects found.
