@@ -89,24 +89,6 @@ const Projects = () => {
       category: "Node.js",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe",
     },
-    {
-      id: 10,
-      title: "CRUD operations",
-      description: "Full CRUD admin panel",
-      image: "/images/11.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "Node.js",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7228362366478909440-PiGQ",
-    },
-    {
-      id: 11,
-      title: "User App",
-      description: "Admin panel for users",
-      image: "/images/12.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "Node.js",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-fullstackdevelopment-javascript-activity-7236337059467063298-1vpQ",
-    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
