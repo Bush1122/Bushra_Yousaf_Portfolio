@@ -35,6 +35,15 @@ const Projects = () => {
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT",
     },
+    {
+      id: 4,
+      title: "Pluse",
+      description: "Online reservation system",
+      image: "/images/4.png",
+      technologies: ["HTML", "Bootstrap", "JavaScript"],
+      category: "JavaScript",
+      link: "https://github.com/Bush1122/Pluse.git",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
