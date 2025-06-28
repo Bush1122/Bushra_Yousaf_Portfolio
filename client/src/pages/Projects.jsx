@@ -172,10 +172,24 @@ const Projects = () => {
                 />
 
                 <div className="p-4 flex flex-col justify-between">
-                  <h3 className="mb-3 text-xl font-bold text-gray-800 dark:text-gray-100">
+                  {/* Project Title */}
+                  <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-gray-100">
                     {project.title}
                   </h3>
 
+                  {/* Technologies Used */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-100 rounded dark:bg-yellow-700 dark:text-white"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* View Project Button */}
                   <div className="mt-auto">
                     <a
                       href={project.link}
