@@ -2,12 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/pageComponents/Header";
 import Footer from "../components/pageComponents/Footer";
+import ScrollReveal from "../components/animated/ScrollReveal";
 import ParticleBackground from "../components/experimental/ParticleBackground";
 import PhysicsCursor from "../components/ui/PhysicsCursor";
-import ScrollReveal from "../components/animated/ScrollReveal";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+
   const projects = [
     {
       id: 1,
@@ -20,7 +21,6 @@ const Projects = () => {
     {
       id: 2,
       title: "Constra",
-      description: "Enhanced workflow using HTML, CSS, Bootstrap, React.js",
       image: "/images/2.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
@@ -29,7 +29,6 @@ const Projects = () => {
     {
       id: 3,
       title: "Namud-e-Sehar Foundation",
-      description: "Drag and drop task board with authentication",
       image: "/images/3.png",
       technologies: ["React", "Node.js", "Express"],
       category: "React",
@@ -38,7 +37,6 @@ const Projects = () => {
     {
       id: 4,
       title: "Pluse",
-      description: "Online reservation system",
       image: "/images/4.png",
       technologies: ["HTML", "Bootstrap", "JavaScript"],
       category: "JavaScript",
@@ -47,7 +45,6 @@ const Projects = () => {
     {
       id: 5,
       title: "Online Store",
-      description: "Weather data with 5-day forecast",
       image: "/images/5.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
@@ -56,16 +53,14 @@ const Projects = () => {
     {
       id: 6,
       title: "ATS CV Checker",
-      description: "Dashboard with interactive charts",
       image: "/images/6.png",
-      technologies: ["HTML", "Bootstrap", "JavaScript", "php"],
+      technologies: ["HTML", "Bootstrap", "JavaScript", "PHP"],
       category: "php",
       link: "https://www.facebook.com/share/r/19CXvwUVnF/",
     },
     {
       id: 7,
       title: "Online Quran Service",
-      description: "Marketing landing page with animations",
       image: "/images/7.png",
       technologies: ["HTML", "Bootstrap", "React"],
       category: "React",
@@ -74,7 +69,6 @@ const Projects = () => {
     {
       id: 8,
       title: "Travel Ticket (CRUD)",
-      description: "Admin panel with CRUD",
       image: "/images/8.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "Redux",
@@ -83,7 +77,6 @@ const Projects = () => {
     {
       id: 9,
       title: "Notepad App",
-      description: "CRUD with Node.js and MongoDB",
       image: "/images/10.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
@@ -91,8 +84,7 @@ const Projects = () => {
     },
     {
       id: 10,
-      title: "CRUD operations",
-      description: "Full CRUD admin panel",
+      title: "CRUD Operations",
       image: "/images/11.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
@@ -101,7 +93,6 @@ const Projects = () => {
     {
       id: 11,
       title: "User App",
-      description: "Admin panel for users",
       image: "/images/12.png",
       technologies: ["React", "Node.js", "MongoDB"],
       category: "React",
@@ -131,13 +122,16 @@ const Projects = () => {
   return (
     <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="absolute inset-0 -z-10">
+        {/* Optional: Disable particles and cursor for mobile users */}
         <ParticleBackground />
       </div>
+
       <PhysicsCursor />
       <Header />
 
       <main className="container relative z-20 px-4 py-8 mx-auto">
         <ScrollReveal delay={0.2}>
+          {/* Heading */}
           <div className="mb-10 text-center mt-14">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
               My Projects
@@ -148,6 +142,7 @@ const Projects = () => {
             </p>
           </div>
 
+          {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {filters.map((filter) => (
               <motion.button
@@ -155,9 +150,9 @@ const Projects = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-3 py-1 text-sm rounded ${
+                className={`px-3 py-1 text-sm rounded transition ${
                   activeFilter === filter
-                    ? "bg-yellow-500 text-white"
+                    ? "bg-yellow-500 text-white shadow"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                 }`}
               >
@@ -166,51 +161,53 @@ const Projects = () => {
             ))}
           </div>
 
+          {/* Projects Grid */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project) => (
-              <div
+              <motion.div
                 key={project.id}
-                className="overflow-hidden bg-white rounded shadow dark:bg-gray-800 flex flex-col"
+                whileHover={{ scale: 1.02 }}
+                className="flex flex-col overflow-hidden bg-white rounded-lg shadow hover:shadow-lg dark:bg-gray-800"
               >
+                {/* Image */}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="object-cover w-full h-48"
+                  className="object-cover w-full h-48 sm:h-56"
                 />
 
+                {/* Content */}
                 <div className="p-4 flex flex-col flex-grow">
-                  {/* Title */}
                   <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
                     {project.title}
                   </h3>
 
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-100 rounded dark:bg-yellow-700 dark:text-white"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-100 rounded dark:bg-yellow-700 dark:text-white"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
                   {/* View Button */}
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-full text-center px-4 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out mt-auto"
+                    className="inline-block w-full text-center px-4 py-2 mt-auto text-sm font-semibold text-white bg-yellow-500 rounded-lg shadow hover:bg-yellow-600 transition-all duration-300 ease-in-out"
                   >
                     View Project
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
-            {/* If No Projects */}
+            {/* No Projects Found */}
             {filteredProjects.length === 0 && (
               <div className="col-span-full text-center text-gray-500">
                 No projects found.
