@@ -171,7 +171,7 @@ const Projects = () => {
                   className="object-cover w-full h-48"
                 />
 
-                <div className="p-4 flex flex-col justify-between h-full">
+                <div className="p-4 flex flex-col justify-between">
                   <h3 className="mb-3 text-xl font-bold text-gray-800 dark:text-gray-100">
                     {project.title}
                   </h3>
