@@ -175,9 +175,7 @@ const Projects = () => {
                   <h3 className="mb-2 text-lg font-semibold">
                     {project.title}
                   </h3>
-                  <p className="mb-2 text-sm text-gray-600">
-                    {project.description}
-                  </p>
+
                   <a
                     href={project.link}
                     target="_blank"
