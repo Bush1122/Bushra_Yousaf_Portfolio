@@ -44,6 +44,15 @@ const Projects = () => {
       category: "JavaScript",
       link: "https://github.com/Bush1122/Pluse.git",
     },
+    {
+      id: 5,
+      title: "Online Store",
+      description: "Weather data with 5-day forecast",
+      image: "/images/5.png",
+      technologies: ["HTML", "Bootstrap", "React"],
+      category: "React",
+      link: "#",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
