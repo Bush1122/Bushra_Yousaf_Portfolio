@@ -26,7 +26,15 @@ const Projects = () => {
       category: "React",
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_webdevelopment-javascript-html-activity-7218691521133371392-2TgT",
     },
-    // ... add your other projects here
+    {
+      id: 3,
+      title: "Namud-e-Sehar Foundation",
+      description: "Drag and drop task board with authentication",
+      image: "/images/3.png",
+      technologies: ["React", "Node.js", "Express"],
+      category: "React",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_linkedin-techforgood-reactjs-activity-7259083468955914240-9VWT",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
