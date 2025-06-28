@@ -44,51 +44,7 @@ const Projects = () => {
       category: "JavaScript",
       link: "https://github.com/Bush1122/Pluse.git",
     },
-    {
-      id: 5,
-      title: "Online Store",
-      description: "Weather data with 5-day forecast",
-      image: "/images/5.png",
-      technologies: ["HTML", "Bootstrap", "React"],
-      category: "React",
-      link: "#",
-    },
-    {
-      id: 6,
-      title: "ATS CV Checker",
-      description: "Dashboard with interactive charts",
-      image: "/images/6.png",
-      technologies: ["HTML", "Bootstrap", "JavaScript"],
-      category: "php",
-      link: "https://www.facebook.com/share/r/19CXvwUVnF/",
-    },
-    {
-      id: 7,
-      title: "Online Quran Service",
-      description: "Marketing landing page with animations",
-      image: "/images/7.png",
-      technologies: ["HTML", "Bootstrap", "React"],
-      category: "React",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F",
-    },
-    {
-      id: 8,
-      title: "Travel Ticket (CRUD)",
-      description: "Admin panel with CRUD",
-      image: "/images/8.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "Redux",
-      link: "https://youtu.be/tK-2LOAWgzg?si=TXMQ-Irp169xB23_",
-    },
-    {
-      id: 9,
-      title: "Notepad App",
-      description: "CRUD with Node.js and MongoDB",
-      image: "/images/10.png",
-      technologies: ["React", "Node.js", "MongoDB"],
-      category: "Node.js",
-      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_nodejs-expressjs-ejs-activity-7225744621472014337-iVZe",
-    },
+    // ... add your other projects here
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "php"];
