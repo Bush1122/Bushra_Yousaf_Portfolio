@@ -114,12 +114,19 @@ const Projects = () => {
   const filteredProjects =
     activeFilter === "All"
       ? projects
-      : projects.filter(
-          (project) =>
+      : projects.filter((project) => {
+          const hasTechnologies =
+            Array.isArray(project.technologies) &&
             project.technologies.some((tech) =>
               tech.toLowerCase().includes(activeFilter.toLowerCase())
-            ) || project.category.toLowerCase() === activeFilter.toLowerCase()
-        );
+            );
+
+          const hasCategory =
+            typeof project.category === "string" &&
+            project.category.toLowerCase() === activeFilter.toLowerCase();
+
+          return hasTechnologies || hasCategory;
+        });
 
   return (
     <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -177,7 +184,6 @@ const Projects = () => {
                     {project.title}
                   </h3>
 
-                  {/* Technologies */}
                   {project.technologies && project.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech, index) => (
