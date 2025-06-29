@@ -63,6 +63,16 @@ const Projects = () => {
       link: "#",
       date: "Aug 2023",
     },
+    {
+      id: 6,
+      title: "ATS CV Checker",
+      description: "Dashboard with interactive charts",
+      image: "/images/6.png",
+      technologies: ["HTML", "Bootstrap", "JavaScript"],
+      category: "React",
+      link: "https://www.facebook.com/share/r/19CXvwUVnF/",
+      date: "Aug 2023",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "PHP"];
