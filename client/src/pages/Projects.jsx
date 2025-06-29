@@ -83,6 +83,16 @@ const Projects = () => {
       link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F",
       date: "Aug 2023",
     },
+    {
+      id: 8,
+      title: "Travel Ticket (CRUD)",
+      description: "Admin panel with CRUD",
+      image: "/images/8.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      category: "Redux",
+      link: "https://youtu.be/tK-2LOAWgzg?si=TXMQ-Irp169xB23_",
+      date: "Aug 2023",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "PHP"];
