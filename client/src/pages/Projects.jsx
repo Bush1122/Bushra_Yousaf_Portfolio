@@ -53,7 +53,16 @@ const Projects = () => {
       link: "https://github.com/Bush1122/Pluse.git",
       date: "Aug 2023",
     },
-    // Add more projects as needed
+    {
+      id: 5,
+      title: "Online Store",
+      description: "Weather data with 5-day forecast",
+      image: "/images/5.png",
+      technologies: ["HTML", "Bootstrap", "React"],
+      category: "React",
+      link: "#",
+      date: "Aug 2023",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "PHP"];
