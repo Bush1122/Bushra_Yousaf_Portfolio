@@ -118,7 +118,7 @@ const Projects = () => {
       <Header />
 
       {/* Main content */}
-      <main className="container relative z-10 px-6 py-20 mx-auto">
+      <main className="container relative z-10 px-6 mt-3 py-20 mx-auto">
         <ScrollReveal delay={0.2}>
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
