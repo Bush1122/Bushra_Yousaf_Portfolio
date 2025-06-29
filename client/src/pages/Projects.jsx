@@ -73,6 +73,16 @@ const Projects = () => {
       link: "https://www.facebook.com/share/r/19CXvwUVnF/",
       date: "Aug 2023",
     },
+    {
+      id: 7,
+      title: "Online Quran Service",
+      description: "Marketing landing page with animations",
+      image: "/images/7.png",
+      technologies: ["HTML", "Bootstrap", "React"],
+      category: "React",
+      link: "https://www.linkedin.com/posts/bushra-yousaf-9b6675240_reduxjs-softwaredevelopment-ezitech-activity-7234435288205324289-3E5F",
+      date: "Aug 2023",
+    },
   ];
 
   const filters = ["All", "React", "JavaScript", "Bootstrap", "Node.js", "PHP"];
